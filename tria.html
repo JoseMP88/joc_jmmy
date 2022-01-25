@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>La teva aventura</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Bienvenido a la Aventura de Jimmy</h1>
+            <div class="pagina">Pagina:</div><div class="contadorPagina" > - </div>
+        </header>
+
+        <main>
+              <section class="text">Text</section>
+        </main>
+        <section class=" botons" >
+             <div class="botoSi"> <button onclick="ferSi()">Sí</button></div>
+                <div class="botonTorna">    <button onclick="torna()">TORNA A JUGAR</button></div>
+                <div class="botoNo"> <button onclick="ferNo()">No</button></div>
+            </div>
+        </section>
+        <div class="botonSalir">  <button  onclick="sortir()">SORTIR</button>
+        <script>
+            const historia = [
+                {text: " ¿Estas preparado para jugar? "  ,
+                si: 1,
+                no: 7,
+                },
+                {
+                text: "Te levantas con un gran dolor de cabeza y lleno de sangre, está todo oscuro y te das cuenta de que tienes las manos y los pies atados a una silla. Tras palpar la superficie de la silla, te das cuenta de que puedes intentar cortar la cuerda gracias a un desperfecto de la misma, ¿Quieres intentar cortar la cuerda? ",
+                si: 2,
+                no: 6,
+                },
+                {   
+                text: "Debido a la adrenalina que tu cuerpo está generando, empiezas a frotar la cuerda contra esa imperfección a una velocidad demasiado elevada hasta que finalmente te haces un corte en el antebrazo bastante profundo y doloroso, pero todavía no has conseguido liberarte. ¿Quieres seguir cortando la cuerda?",
+                si: 3,
+                no: 4,
+                },
+                {
+                text: "¡Has conseguido liberarte! , pero empiezas a escuchar que alguien se acerca por tu derecha... miras hacia allí y ves una katana pero no sabes si te dará tiempo a cogerla. ¿Quieres intentar coger la Katana?",
+                si: 5,
+                no: 6,
+                },
+                {   
+                text: "Llevas 5 minutos sin intentar escapar.. te empiezas a econtrar mal debido a la herida, es hora de tomar una decisión, ¿Aguantar el dolor y seguir cortando la cuerda?",
+                si: 3,
+                no: 6 ,
+                },
+                {
+                text: "Coges la Katana y seguidamente te escondes detras de la puerta a esperar a que entre el secuestrador, finalmente se abre la puerta y aparece una silueta... ¿Utilizar la Katana?",
+                si: 9,
+                no: 6,
+                },
+                {
+                text: "Tus heridas y tu poca actitud te llevaron a fallecer en esa sucia habitación",
+                si: 7,
+                no: 7,
+                },
+                { text: "GAME OVER!", 
+                  si: 7,
+                  no: 7 },
+                {
+                text: "Felicidades le acabas de rebanar el cuello a tu secuestrador, corres hacia la puerta de salida.. abres la puerta y te despiertas es la taza del baño de tu amigo Firu... Menuda borrachera ¿Utilizar la Katana?",
+                si: 8,
+                no: 8,
+                },
+                
+            ]
+            let pagina = 0;
+            let text = document.querySelector('.text');
+            text.textContent = historia[pagina].text;
+
+            function ferSi() {
+                pagina =  historia[pagina].si;
+                text.textContent = historia[pagina].text;
+                contador();
+                
+            }
+            function ferNo() {
+                pagina = historia[pagina].no;
+                text.textContent = historia[pagina].text;
+                contador();
+            }
+            function sortir(){
+                pagina = 7;
+                text.textContent = historia[pagina].text;
+                contador();
+            }
+            function torna(){
+                pagina = 0;
+                text.textContent = historia[pagina].text;
+                contador();
+            }
+            function contador(){
+                document.querySelector(".contadorPagina").innerHTML=pagina;
+            }
+        </script>
+
+    </body>
+
+</html>
