@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+       <section class="joc">
         <header>
             <h1>Bienvenido a la Aventura de Jimmy</h1>
             <div class="pagina">Pagina:</div><div class="contadorPagina" > - </div>
@@ -67,6 +68,7 @@
                 
             ]
             let pagina = 0;
+            let array = [];
             let text = document.querySelector('.text');
             text.textContent = historia[pagina].text;
 
@@ -74,28 +76,72 @@
                 pagina =  historia[pagina].si;
                 text.textContent = historia[pagina].text;
                 contador();
+                cami();
                 
             }
             function ferNo() {
                 pagina = historia[pagina].no;
                 text.textContent = historia[pagina].text;
                 contador();
+                cami();
+
             }
             function sortir(){
                 pagina = 7;
                 text.textContent = historia[pagina].text;
                 contador();
+               
             }
             function torna(){
                 pagina = 0;
                 text.textContent = historia[pagina].text;
                 contador();
+                array.length = 0;
+                array=document.querySelector(".camiRecorregut").innerHTML=array;
             }
             function contador(){
                 document.querySelector(".contadorPagina").innerHTML=pagina;
+                
             }
+            function cami(){
+                    
+                    array.push(pagina);
+                    array=document.querySelector(".camiRecorregut").innerHTML=array;
+            }   
         </script>
 
-    </body>
+    </body></section>
+    <section class="nomJugador">
+        <div class="nom"> 
+            <p>Nombre del Jugador</p>
+                <div class="textNom">
+                <button class="botoNom" onclick="jugador()">NOM</button>
+                </div>
+                    <div class="textNom">
+                    <p id="jugadorNom"></p>
+                    </div>
+        </div>
+        
+
+        <script>
+            function jugador(){
+                let person = prompt("Introduce tu nombre", "Desconocido");
+                    if (person != null) {
+                document.getElementById("jugadorNom").innerHTML ="" + person + "";
+                }
+            }
+        </script>
+    </section>
+
+        <section class="camiHistoria">
+            <div class="recorregut"> 
+                <p>Camino Recorrido</p>
+                    <div class="textCami">
+                        <div class="camiRecorregut"> - </div>
+                    </div>
+            </div>        
+            
+            
+        </section>
 
 </html>
